@@ -1,5 +1,6 @@
 package hellojpa;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -8,7 +9,11 @@ public class Member {
     
     @Id // JPA에게 PK가 뭔지 알ㄹ려줌
     private Long id;
+
+    @Column(unique = true, length = 10)
     private String name;
+    private String email;
+    private String phone;
 
     public Member() {
 
