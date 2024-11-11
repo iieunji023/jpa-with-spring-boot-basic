@@ -2,15 +2,36 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class JpaMain {
 
     public static void main(String[] args) {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
-        //code
 
-        em.close();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        try{
+//            Member findMember = em.find(Member.class, 1L);
+            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+                    .setFirstResult(1)
+                    .setMaxResults(8)
+                    .getResultList();
+
+            for (Member member : result) {
+                System.out.println("member.getName() = " + member.getName());
+            }
+
+
+            tx.commit();
+        } catch (Exception e){
+            tx.rollback();
+        }finally {
+            em.close();     // 데이터베이스 커넥션 반환
+        }
         emf.close();
     }
 }
