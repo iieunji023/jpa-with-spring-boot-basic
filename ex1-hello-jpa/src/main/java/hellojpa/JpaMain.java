@@ -16,13 +16,13 @@ public class JpaMain {
 
         try{
 
-            // 영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("b");
+            Member member = new Member();
+            member.setId(2L);
+            member.setUsername("B");
+            member.setRoleType(RoleType.ADMIN);
 
-            em.clear();
+            em.persist(member);
 
-            System.out.println("========================");
             tx.commit();
         } catch (Exception e){
             tx.rollback();
