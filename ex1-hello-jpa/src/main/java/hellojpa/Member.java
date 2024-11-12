@@ -3,7 +3,6 @@ package hellojpa;
 import jakarta.persistence.*;
 
 @Entity
-
 public class Member {
     
     @Id @GeneratedValue
@@ -41,5 +40,15 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+        team.getMembers().add(this);    // this => 현재 나 자신 (Member)
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", team=" + team +
+                '}';
     }
 }
