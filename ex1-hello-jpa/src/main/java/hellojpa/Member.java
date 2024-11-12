@@ -2,28 +2,22 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+@Entity
 
-@Entity // JPA를 사용하는 클래스라는 것을 인식
-@SequenceGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ",
-        initialValue = 1, allocationSize = 50)
 public class Member {
     
-    @Id // JPA에게 PK가 뭔지 알려줌
-    // GenerationType.AUTO: 기본 값, DB 방언에 맞춰서 셋팅해줌
-    // GenerationType.SEQUENCE: 오라클에서 주로 사용
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
+    @Id @GeneratedValue
+    @Column(name="MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", nullable = false)  // 객체는 username, DB에는 name
+    @Column(name = "USERNAME")
     private String username;
 
-    public Member() {
-    }
+//    @Column(name="TEAM_ID")
+//    private Long  teamId;
+    @ManyToOne // Member와 Team 객체의 관계를 JPA에게 알려주기, 1개의 팀에 여러 멤버가 있으니까 팀이 1, 멤바가 N
+    @JoinColumn(name="TEAM_ID") // 테이블 연관관계의 FK와 연결시켜주기
+    private Team team;
 
     public Long getId() {
         return id;
@@ -39,5 +33,13 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

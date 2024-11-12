@@ -2,8 +2,6 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -15,29 +13,26 @@ public class JpaMain {
         tx.begin();
 
         try{
+            // 저장
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
 
-            Member member1 = new Member();
-            member1.setUsername("A");
-            Member member2 = new Member();
-            member2.setUsername("B");
-            Member member3 = new Member();
-            member3.setUsername("C");
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
 
-            System.out.println("=======================");
+            em.flush();
+            em.clear();
 
-            // 1번 호출: DB SEQ = 1    | 1
-            // 2번 호출: DB SEQ = 51   | 2
-            // 3번 호출: DB SEQ = 51   | 3
+            // 조회
+            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam.getName() = " + findTeam.getName());
 
-            em.persist(member1);    // 1, 51
-            em.persist(member2);    // MEM
-            em.persist(member3);    // MEM
-
-            System.out.println("member.getId() = " + member1.getId());
-            System.out.println("member2.getId() = " + member2.getId());
-            System.out.println("member3.getId() = " + member3.getId());
-
-            System.out.println("=======================");
+            Team newTeam = em.find(Team.class, 100L);
+            findMember.setTeam(newTeam);
 
             tx.commit();
         } catch (Exception e){
