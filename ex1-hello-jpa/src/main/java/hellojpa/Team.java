@@ -12,13 +12,14 @@ public class Team {
     @Column(name="TEAM_ID")
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "team") // Member 엔티티의 team과 연결되어 있다는 의미 (여기서 team은 변수명)
+    @OneToMany // Member 엔티티의 team과 연결되어 있다는 의미 (여기서 team은 변수명)
+    @JoinColumn(name="TEAM_ID")
     private List<Member> members = new ArrayList<Member>();
 
-    public void addMember(Member member) {
-        member.setTeam(this);
-        members.add(member);
-    }
+//    public void addMember(Member member) {
+//        member.setTeam(this);
+//        members.add(member);
+//    }
 
     public Long getId() {
         return id;

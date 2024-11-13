@@ -15,28 +15,16 @@ public class JpaMain {
         tx.begin();
 
         try{
-            // 저장
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
-
             Member member = new Member();
             member.setUsername("member1");
-//            member.setTeam(team);
             em.persist(member);
 
-//            team.getMembers().add(member);
-            team.addMember(member);
+            Team team = new Team();
+            team.setName("teamA");
 
-            em.flush();
-            em.clear();
-
-            Team findTeam = em.find(Team.class, team.getId());  // 1차 캐시
-            List<Member> members = findTeam.getMembers();       // 컬렉션에 아무것도 존재하지 않음, 순수한 객체 상태
-
-            System.out.println("=======================");
-//            System.out.println("members = " + findTeam);
-            System.out.println("=======================");
+            //
+            team.getMembers().add(member);
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e){
