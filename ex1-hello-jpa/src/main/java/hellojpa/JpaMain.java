@@ -35,7 +35,7 @@ public class JpaMain {
             List<Member> members = findTeam.getMembers();       // 컬렉션에 아무것도 존재하지 않음, 순수한 객체 상태
 
             System.out.println("=======================");
-            System.out.println("members = " + findTeam);
+//            System.out.println("members = " + findTeam);
             System.out.println("=======================");
 
             tx.commit();
