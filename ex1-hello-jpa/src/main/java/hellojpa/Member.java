@@ -1,12 +1,14 @@
 package hellojpa;
 
 import jakarta.persistence.*;
+import org.h2.engine.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity{
     
     @Id @GeneratedValue
     @Column(name="MEMBER_ID")
@@ -23,16 +25,8 @@ public class Member {
     @JoinColumn(name="LOCKER_ID")
     private Locker locker;
 
-//    @ManyToMany
-//    @JoinTable(name = "MEMBER_PRODUCT")
     @OneToMany(mappedBy = "member")
     private List<MemberProduct> memberProducts = new ArrayList<>();
-
-//    @Column(name="TEAM_ID")
-//    private Long  teamId;
-//    @ManyToOne // Member와 Team 객체의 관계를 JPA에게 알려주기, 1개의 팀에 여러 멤버가 있으니까 팀이 1, 멤바가 N
-//    @JoinColumn(name="TEAM_ID") // 테이블 연관관계의 FK와 연결시켜주기
-//    private Team team;
 
     public Long getId() {
         return id;
@@ -50,21 +44,4 @@ public class Member {
         this.username = username;
     }
 
-//    public Team getTeam() {
-//        return team;
-//    }
-//
-//    public void setTeam(Team team) {
-//        this.team = team;
-//        team.getMembers().add(this);    // this => 현재 나 자신 (Member)
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Member{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", team=" + team +
-//                '}';
-//    }
 }
