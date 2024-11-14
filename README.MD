@@ -41,3 +41,5 @@
   - 고아 객체 
   - 영속성 전이 + 고아 객체, 생명주기
 - 실전 예제 - 5.연관관계 관리
+
+## [실전 예제 5 - 연관관계 관리](https://github.com/iieunji023/jpa-ex01/blob/main/ex05.md)
