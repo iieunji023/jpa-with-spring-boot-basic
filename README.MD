@@ -27,3 +27,8 @@
 - 일대일 [1:1]
 - 다대다 [N:M]
 - 실전 예제 - 3. 다양한 연관관계 매핑
+
+## [Section08](https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/%EC%84%B9%EC%85%9808.md)
+- 상속관계 매핑
+- Mapped Superclass - 매핑 정보 상속
+- 실전 예제 4 - 상속관계 매핑
