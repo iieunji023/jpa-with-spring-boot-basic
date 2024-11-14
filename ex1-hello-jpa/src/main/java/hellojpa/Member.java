@@ -12,8 +12,8 @@ public class Member extends BaseEntity{
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne  // 이렇게 하면 Team 엔티티의 members 필드와 Member 엔티티의 team 필드 모두 연관관계의 주인으로 인식 => 큰일남~!!
-    @JoinColumn(name="TEAM_ID", insertable = false, updatable = false)      // 읽기 전용으로 만들어버림(INSERT, UPDATE를 안함)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="TEAM_ID")
     private Team team;
 
     public Long getId() {

@@ -3,7 +3,9 @@ package hellojpa;
 import jakarta.persistence.*;
 import org.hibernate.Hibernate;
 
-public class JpaMain {
+import java.util.List;
+
+public class JpaMain{
 
     public static void main(String[] args) {
 
@@ -14,24 +16,29 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
+
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
+
             Member member1 = new Member();
             member1.setUsername("member1");
+            member1.setTeam(teamA);
             em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            member2.setTeam(teamB);
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-            Member refMember = em.getReference(Member.class, member1.getId());
-            System.out.println("refMember.getClass() = " + refMember.getClass().getName());
-            refMember.getUsername();    // 프록시 강제 초기화
+            List<Member> members = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();    // 한방 쿼리로 값이 다 채워져있음
 
-//            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));   // 프록시를 초기화하면 true, 아니면 false
-            Hibernate.initialize(refMember);    // 강제 초기화
-
-//            em.detach(refMember);
-//            em.close();
-
-//            refMember.getUsername();
 
             tx.commit();
         } catch (Exception e){
@@ -43,11 +50,4 @@ public class JpaMain {
         emf.close();
     }
 
-    private static void printMemberAndTeam(Member member) {
-        String username = member.getUsername();
-        System.out.println("username = " + username);
-
-        Team team = member.getTeam();
-        System.out.println("team.getName() = " + team.getName());
-    }
 }
