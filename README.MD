@@ -32,3 +32,12 @@
 - 상속관계 매핑
 - Mapped Superclass - 매핑 정보 상속
 - 실전 예제 4 - 상속관계 매핑
+
+## [Section09](https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/%EC%84%B9%EC%85%9809.md)
+- 프록시
+- 즉시 로딩과 지연 로딩 
+  - 지연 로딩 활용
+- 영속성 전이: CASCADE 
+  - 고아 객체 
+  - 영속성 전이 + 고아 객체, 생명주기
+- 실전 예제 - 5.연관관계 관리
