@@ -16,15 +16,36 @@ public class JpaMain{
         tx.begin();
 
         try{
-            Address address = new Address("city", "street", "zipcode");
+            Member member = new Member();
+            member.setUsername("membmer1");
+            member.setHomeAddress(new Address("homeCity", "street", "10000"));
 
-            Member member1 = new Member();
-            member1.setUsername("meber1");
-            member1.setHomeAddress(address);
-            em.persist(member1);
+            member.getFavoriteFoods().add("치킨");
+            member.getFavoriteFoods().add("족발");
+            member.getFavoriteFoods().add("피자");
 
-            Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
-            member1.setHomeAddress(newAddress); // 값 하나만 변경하는 것이 아닌 통으로 바꾸는 것
+            member.getAddressHistory().add(new AddressEntity("old1", "street", "10000"));
+            member.getAddressHistory().add(new AddressEntity("old2", "street", "10000"));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println("============== START ==============");
+            Member findMember = em.find(Member.class, member.getId());
+
+            // homeCity -> newCity로 변경
+//            findMember.getHomeAddress().setCity("newCity");
+//            findMember.setHomeAddress(new Address("newCity", findMember.getHomeAddress().getStreet(), findMember.getHomeAddress().getZipcode()));
+//
+//            // 치킨 -> 한식
+//            findMember.getFavoriteFoods().remove("치킨");
+//            findMember.getFavoriteFoods().add("한식");
+//
+//            // 주소 변경
+//            findMember.getAddressHistory().remove(new AddressEntity("old1", "street", "10000"));  // equals 작동
+//            findMember.getAddressHistory().add(new AddressEntity("newCity1", "street", "10000"));
 
             tx.commit();
         } catch (Exception e){
