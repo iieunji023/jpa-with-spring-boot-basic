@@ -42,3 +42,10 @@
   - 영속성 전이 + 고아 객체, 생명주기
 - 실전 예제 - 5.연관관계 관리
 
+## [Section10](https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/%EC%84%B9%EC%85%9810.md)
+- 기본값 타입
+- 임베디드 타입
+- 값 타입과 불변 객체
+- 값 타입의 비교
+- 값 타입 컬렉션
+- 실전 예제 6 - 값 타입 매핑
