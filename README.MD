@@ -49,3 +49,28 @@
 - 값 타입의 비교
 - 값 타입 컬렉션
 - 실전 예제 6 - 값 타입 매핑
+
+## [Section11](https://github.com/iieunji023/jpql-ex/blob/main/%EC%84%B9%EC%85%9811.md)
+- 소개
+- 기본 문법과 쿼리 API
+- 프로젝션(SELECT)
+- 페이징
+- 조건
+- 서브 쿼리
+- JPQL 타입 표현과 기타식
+- 조건식(CASE 등등)
+- JPQL 함수
+
+## [Section12](https://github.com/iieunji023/jpql-ex/blob/main/%EC%84%B9%EC%85%9812.md)
+- 경로 표현식
+- 패치 조인 1 - 기본
+- 패치 조인 2 - 한계
+- 다형성 쿼리
+- 엔티티 직접 사용
+- Named 쿼리
+- 벌크 연산
+
+<br>
+
+[<img src="https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/images/notion.jpg" width="350">
+노션정리](https://equable-process-5ca.notion.site/ORM-JPA-13bafe02dcc2804dadc4c17b3fa2d687?pvs=4)
