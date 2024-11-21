@@ -72,5 +72,5 @@
 
 <br>
 
-[<img src="https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/images/notion.jpg" width="350">
+[<img src="https://github.com/iieunji023/jpa-with-spring-boot-basic/blob/main/images/notion.jpg" width="50">
 노션정리](https://equable-process-5ca.notion.site/ORM-JPA-13bafe02dcc2804dadc4c17b3fa2d687?pvs=4)
