@@ -72,4 +72,4 @@
 
 <br>
 
-노션정리](https://equable-process-5ca.notion.site/ORM-JPA-13bafe02dcc2804dadc4c17b3fa2d687?pvs=4)
+[노션정리](https://equable-process-5ca.notion.site/ORM-JPA-13bafe02dcc2804dadc4c17b3fa2d687?pvs=4)
